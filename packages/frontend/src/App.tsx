@@ -3,11 +3,37 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Button } from "@/components/ui/button"
+import { atom, useAtom } from 'jotai'
+
+// Create your atoms and derivatives
+const textAtom = atom('hello')
+const uppercaseAtom = atom(
+  (get) => get(textAtom).toUpperCase()
+)
+
+// Use them anywhere in your app
+const Input = () => {
+  const [text, setText] = useAtom(textAtom)
+  const handleChange = (e) => setText(e.target.value)
+  return (
+    <input value={text} onChange={handleChange} />
+  )
+}
+
+const Uppercase = () => {
+  const [uppercase] = useAtom(uppercaseAtom)
+  return (
+    <div>Uppercase: {uppercase}</div>
+  )
+}
+
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <>
+    <Input />
+      <Uppercase />
       <div><Button>Click me</Button>
         <a href="https://vitejs.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
