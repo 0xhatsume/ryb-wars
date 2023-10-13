@@ -1,0 +1,29 @@
+node_modules
+
+.ipynb_checkpoints
+.env
+.env.gs
+.local
+__pycache__
+
+data/
+
+streamlit/*.json
+streamlit/*.pkl
+streamlit/*.csv
+.DS_Store
+
+# Editor directories and files
+.vscode/*
+.vscode/
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Local Netlify folder
+.netlify
