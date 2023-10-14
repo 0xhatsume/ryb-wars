@@ -8,7 +8,7 @@
     "test": "test"
   },
   "scripts": {
-    "deployMantle": "forge build && forge create --rpc-url https://rpc.testnet.mantle.xyz --private-key $(grep PRIVATE_KEY .env | cut -d '=' -f2) src/RybWars.sol:RybWarsV1",
+    "deployMantle": "forge build && forge create --legacy --rpc-url https://rpc.testnet.mantle.xyz --private-key $(grep PRIVATE_KEY .env | cut -d '=' -f2) src/RybWars.sol:RybWarsV1",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
