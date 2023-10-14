@@ -8,14 +8,14 @@ import WatchList from './components/watchlist';
 import { useBurnerKey } from './hooks/useBurnerKey';
 import { MockConnector } from 'wagmi/connectors/mock';
 import { useAccount, useConnect, useDisconnect } from 'wagmi';
-import { privateKeyToAccount } from 'viem/accounts';
+import { privateKeyToAccount, generatePrivateKey } from 'viem/accounts';
 import { createWalletClient, http, publicActions } from 'viem';
 import { chainConfigs } from './config/chainConfig';
 import { supportedChains } from './config/supportedChains';
 
 function App() {
   const { connect } = useConnect();
-  const { burnerKey, burnerKeyAccount, burnerAddress, updateBurnerKey } = useBurnerKey();
+  const { burnerKey, updateBurnerKey } = useBurnerKey();
   const hasBurnerKey = burnerKey !==null
 
   useEffect(() => {
@@ -40,7 +40,7 @@ function App() {
       })
       // connect to new PK
       connect({connector: cachedConnector})
-      
+
     }else{
       const viemAccount = privateKeyToAccount(burnerKey)
       const cachedClient = createWalletClient({
