@@ -2,7 +2,10 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 function WatchList() {
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', height:'93vh', position: "relative"}}>
+    <div className="border border-slate-800
+    rounded-t-lg
+    bg-white h-full
+    ">
       <Tabs defaultValue="WatchList" className="">
         <TabsList>
           <TabsTrigger value="WatchList">WatchList</TabsTrigger>

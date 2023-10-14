@@ -3,7 +3,10 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 function Profile() {
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "90vh", top: 0, position: "relative" }}>
+    <div className="border border-slate-800
+    rounded-t-lg
+    bg-white h-full
+    ">
       <Card>
         <CardHeader>
           <CardTitle>Card Title</CardTitle>
