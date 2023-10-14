@@ -1,6 +1,8 @@
 import './App.css';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Home from './components/ui/home';
+import Profile from './components/ui/profile';
+import WatchList from './components/ui/watchlist';
 
 function App() {
   return (
@@ -10,8 +12,12 @@ function App() {
           <Home />
         </TabsContent>
 
+        <TabsContent value="watchList">
+          <WatchList />
+        </TabsContent>
+        
         <TabsContent value="profile">
-          Change your password here.
+          <Profile />
         </TabsContent>
 
         <TabsContent value="worldWars">
@@ -20,8 +26,8 @@ function App() {
 
         <TabsList>
           <TabsTrigger value="home">Home</TabsTrigger>
+          <TabsTrigger value="watchList">watchlist</TabsTrigger>
           <TabsTrigger value="profile">Profile</TabsTrigger>
-          <TabsTrigger value="otherTeam">otherTeam</TabsTrigger>
           <TabsTrigger value="worldWars">World Wars</TabsTrigger>
         </TabsList>
       </Tabs>
