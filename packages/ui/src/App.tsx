@@ -1,13 +1,14 @@
 import './App.css';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect} from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Home from './components/home';
 import Profile from './components/profile';
 import WatchList from './components/watchlist';
+import World from './components/world';
 
 import { useBurnerKey } from './hooks/useBurnerKey';
 import { MockConnector } from 'wagmi/connectors/mock';
-import { useAccount, useConnect, useDisconnect } from 'wagmi';
+import { useConnect } from 'wagmi';
 import { privateKeyToAccount, generatePrivateKey } from 'viem/accounts';
 import { createWalletClient, http, publicActions } from 'viem';
 import { chainConfigs } from './config/chainConfig';
@@ -17,6 +18,7 @@ function App() {
   const { connect } = useConnect();
   const { burnerKey, updateBurnerKey } = useBurnerKey();
   const hasBurnerKey = burnerKey !==null
+  
 
   useEffect(() => {
     if(!hasBurnerKey){
@@ -25,7 +27,7 @@ function App() {
       const viemAccount = privateKeyToAccount(newBurnerKey)
       const cachedClient = createWalletClient({
         account: viemAccount,
-        chain: chainConfigs[parseInt(import.meta.env.VITE_CHAIN_ID)]?.config?.id,
+        chain: chainConfigs[parseInt(import.meta.env.VITE_CHAIN_ID)]?.config,
         transport: http()
       }).extend(publicActions) 
 
@@ -45,7 +47,7 @@ function App() {
       const viemAccount = privateKeyToAccount(burnerKey)
       const cachedClient = createWalletClient({
         account: viemAccount,
-        chain: chainConfigs[parseInt(import.meta.env.VITE_CHAIN_ID)]?.config?.id,
+        chain: chainConfigs[parseInt(import.meta.env.VITE_CHAIN_ID)]?.config,
         transport: http()
       }).extend(publicActions) 
 
@@ -64,30 +66,69 @@ function App() {
   },[]);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', position: 'fixed', bottom: 0, left: 0, width: '100%' }}>
-      <Tabs defaultValue="home" className="">
-        <TabsContent value="home">
-          <Home />
-        </TabsContent>
+    <div 
+    className="
+    flex flex-row justify-center items-center">
+      <Tabs defaultValue="home" 
+        className="
+        rounded-lg border 
+        bg-gray-200 w-[23vw] h-[98vh]
+        flex flex-col justify-start items-center
+        pt-7
+        ">
 
-        <TabsContent value="watchList">
-          <WatchList />
-        </TabsContent>
-        
-        <TabsContent value="profile">
-          <Profile />
-        </TabsContent>
+          <div className="flex flex-row
+          justify-start items-center
+          w-full
+          ">
+            <div className="text-2xl
+            ml-5 font-bold
+            ">
+              <span className="text-red-500">R</span>
+              <span className="text-orange-300">Y</span>
+              <span className="text-blue-700">B</span>
+              <span>.</span>
+              <span className="font-normal">WARS</span>
+            </div>
 
-        <TabsContent value="worldWars">
-          Change your password here.
-        </TabsContent>
+            <div className="mr-5 ml-auto 
+            rounded-2xl bg-gray-100 px-3 py-1
+            ">
+              <span className="mx-1">0</span>
+              <span className="mx-1">ETH</span>
+            </div>
+          </div>
 
-        <TabsList>
-          <TabsTrigger value="home">Home</TabsTrigger>
-          <TabsTrigger value="watchList">watchlist</TabsTrigger>
-          <TabsTrigger value="profile">Profile</TabsTrigger>
-          <TabsTrigger value="worldWars">World Wars</TabsTrigger>
-        </TabsList>
+          <TabsContent value="home"
+          className="h-full w-full"
+          >
+            <Home />
+          </TabsContent>
+
+          <TabsContent value="watchlist"
+          className="h-full w-full"
+          >
+            <WatchList />
+          </TabsContent>
+          
+          <TabsContent value="character"
+          className="h-full w-full"
+          >
+            <Profile />
+          </TabsContent>
+
+          <TabsContent value="world"
+          className="h-full w-full"
+          >
+            <World />
+          </TabsContent>
+
+          <TabsList className="mt-auto w-full">
+            <TabsTrigger value="home">Home</TabsTrigger>
+            <TabsTrigger value="watchlist">Watchlist</TabsTrigger>
+            <TabsTrigger value="character">Character</TabsTrigger>
+            <TabsTrigger value="world">World</TabsTrigger>
+          </TabsList>
       </Tabs>
     </div>
   );
