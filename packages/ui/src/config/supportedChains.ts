@@ -45,3 +45,5 @@ export const mantleTestnet: Chain = {
         },
     },
 };
+
+export const supportedChains = [taikoTestnet, mantleTestnet];
