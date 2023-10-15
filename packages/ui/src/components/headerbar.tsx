@@ -1,5 +1,12 @@
 import React from 'react';
 import { useAccount, useBalance, useNetwork } from 'wagmi';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip"
+
 
 const Headerbar = () => {
   const { address, isConnected } = useAccount()
@@ -23,23 +30,40 @@ const Headerbar = () => {
 
 
             {/* balance button */}
-            <div className="mr-5 ml-auto 
-            rounded-2xl bg-gray-100 px-3 py-1
-            flex flex-row justify-center items-center
-            ">
-              {
-                chain?.nativeCurrency.symbol === "ETH" ?
-              <img className="h-[20px] mr-1" src="eth-logo.svg"/>
-              :
-              chain?.nativeCurrency.symbol === "MNT" ? 
-              <img className="h-[20px] mr-1" src="mnt-logo.svg"/>
-              : ""
-              }
-              <span className="mx-1">{`${
+            <div className="mr-5 ml-auto" 
+            onClick={()=>{
+              navigator.clipboard.writeText(address as string)
+            }}
+            >
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger>
+                    <div className=" 
+                    rounded-2xl bg-gray-100 px-3 py-1
+                    flex flex-row justify-center items-center
+                    ">
+                      {
+                        chain?.nativeCurrency.symbol === "ETH" ?
+                      <img className="h-[20px] mr-1" src="eth-logo.svg"/>
+                      :
+                      chain?.nativeCurrency.symbol === "MNT" ? 
+                      <img className="h-[20px] mr-1" src="mnt-logo.svg"/>
+                      : ""
+                      }
+                      <span className="mx-1">{`${
 
-                    data?.formatted?parseFloat(data?.formatted).toFixed(3):"0"
-                    }`}</span>
-              <span className="mx-1">{chain?.nativeCurrency.symbol??"GAS"}</span>
+                            data?.formatted?parseFloat(data?.formatted).toFixed(3):"0"
+                            }`}</span>
+                      <span className="mx-1">{chain?.nativeCurrency.symbol??"GAS"}</span>
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                      <p>{isConnected?
+                      address :
+                      "Not Connected To Wallet"}</p>
+                    </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
             </div>
           </div>
   )
