@@ -6,19 +6,50 @@ function WatchList() {
     rounded-t-lg
     bg-white h-full
     ">
-      <Tabs defaultValue="WatchList" className="">
-        <TabsList>
-          <TabsTrigger value="WatchList">WatchList</TabsTrigger>
-          <TabsTrigger value="pass">pass</TabsTrigger>
-          <TabsTrigger value="myTeam">myTeam</TabsTrigger>
-        </TabsList>
+      <Tabs defaultValue="activity" className="">
+      <div className="flex flex-row ">
+          <TabsList>
+            <TabsTrigger value="activity">Activity</TabsTrigger>
+            <TabsTrigger value="watchlist">Watchlist</TabsTrigger>
+          </TabsList>
+        </div>
 
-        <TabsContent value="WatchList">This is WatchList</TabsContent>
+        <TabsContent value="activity">
+          <div className="flex flex-col">
+              <img className="
+              hover:border-blue-300 hover:border
+              " src="watchlist-activity-1.jpg"/>
+              <img className="
+              hover:border-blue-300 hover:border
+              " src="watchlist-activity-2.jpg"/>
+              <img className="
+              hover:border-blue-300 hover:border
+              " src="watchlist-activity-3.jpg"/>
+              <img className="
+              hover:border-blue-300 hover:border
+              " src="watchlist-activity-4.jpg"/>
+            </div>
+          </TabsContent>
 
-        <TabsContent value="pass">Change your pass here.</TabsContent>
+        <TabsContent value="watchlist">
+          <div className="flex flex-col">
+                <img className="
+                hover:border-blue-300 hover:border
+                " src="watchlist-watchlist-1.jpg"/>
+                <img className="
+                hover:border-blue-300 hover:border
+                " src="watchlist-watchlist-2.jpg"/>
+                <img className="
+                hover:border-blue-300 hover:border
+                " src="watchlist-watchlist-3.jpg"/>
+                <img className="
+                hover:border-blue-300 hover:border
+                " src="watchlist-watchlist-4.jpg"/>
+              </div>
 
-        <TabsContent value="myTeam">Change your myTeam here.</TabsContent>
-      </Tabs>
+        </TabsContent>
+
+        </Tabs>
     </div>
   );
 }
