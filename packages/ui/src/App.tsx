@@ -5,6 +5,7 @@ import Home from './components/home';
 import Profile from './components/profile';
 import WatchList from './components/watchlist';
 import World from './components/world';
+import Buy from './components/buy';
 import Headerbar from './components/headerbar';
 import Footerlist from './components/footerlist';
 
@@ -103,6 +104,12 @@ function App() {
           className="h-full w-full"
           >
             <World />
+          </TabsContent>
+
+          <TabsContent value="buy"
+          className="h-full w-full"
+          >
+            <Buy />
           </TabsContent>
 
           <Footerlist/>

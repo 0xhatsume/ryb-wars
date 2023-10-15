@@ -1,7 +1,7 @@
 import React from 'react';
 import { TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {AiFillHome} from 'react-icons/ai';
-import {BsSunglasses} from 'react-icons/bs';
+import {BsSunglasses, BsCash} from 'react-icons/bs';
 import {PiPersonFill} from 'react-icons/pi';
 import {BiWorld} from 'react-icons/bi';
 
@@ -45,6 +45,15 @@ const Footerlist = () => {
                 py-2'>
                     <BiWorld/>
                     <span>World</span>
+                </div>
+            </TabsTrigger>
+        
+        <TabsTrigger className="mx-1"
+        value="buy">
+            <div className='flex flex-col justify-center items-center
+                py-2'>
+                    <BsCash/>
+                    <span>Buy</span>
                 </div>
             </TabsTrigger>
     </TabsList>
