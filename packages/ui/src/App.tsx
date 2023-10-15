@@ -6,6 +6,7 @@ import Profile from './components/profile';
 import WatchList from './components/watchlist';
 import World from './components/world';
 import Headerbar from './components/headerbar';
+import Footerlist from './components/footerlist';
 
 import { useBurnerKey } from './hooks/useBurnerKey';
 import { MockConnector } from 'wagmi/connectors/mock';
@@ -104,12 +105,7 @@ function App() {
             <World />
           </TabsContent>
 
-          <TabsList className="mt-auto w-full">
-            <TabsTrigger value="home">Home</TabsTrigger>
-            <TabsTrigger value="watchlist">Watchlist</TabsTrigger>
-            <TabsTrigger value="character">Character</TabsTrigger>
-            <TabsTrigger value="world">World</TabsTrigger>
-          </TabsList>
+          <Footerlist/>
       </Tabs>
     </div>
   );
