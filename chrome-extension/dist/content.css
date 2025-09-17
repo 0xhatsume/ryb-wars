@@ -1,0 +1,43 @@
+/* Content script styles for Test321 Extension */
+
+.test321-highlight {
+  background-color: #ffeb3b !important;
+  padding: 2px 4px !important;
+  border-radius: 3px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  transition: background-color 0.3s ease !important;
+}
+
+.test321-highlight:hover {
+  background-color: #fdd835 !important;
+}
+
+#test321-indicator {
+  position: fixed !important;
+  top: 10px !important;
+  right: 10px !important;
+  width: 8px !important;
+  height: 8px !important;
+  background: #4ade80 !important;
+  border-radius: 50% !important;
+  z-index: 10000 !important;
+  opacity: 0.7 !important;
+  transition: opacity 0.3s ease !important;
+  pointer-events: none !important;
+}
+
+/* Animation for flash effect */
+@keyframes test321-flash {
+  0% { 
+    opacity: 1; 
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 0.5; 
+    transform: scale(1.02);
+  }
+  100% { 
+    opacity: 0; 
+    transform: scale(1);
+  }
+}
